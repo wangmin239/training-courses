@@ -3,9 +3,14 @@ CFLAGS = -I./include -fPIC
 LIBS = ./lib
 LDFLAGS = -L$(LIBS)
 LDLIBS = -lprintStudentInfo
+SRC = ./src
+TARGET = studentInfo
+.PHONY: subdirs $(SRC) $(TARGET)
+subdirs :$(SRC) $(TARGET)
+$(SRC):
+	$(MAKE) -C $@
 
-
-studentInfo:studentInfo.o
+$(TARGET):studentInfo.o 
 	$(CC)  $(CFLAGS) $(LDFLAGS) $< -o $@ $(LDLIBS) -Wl,-rpath,./$(LIBS)
 
 #compile the objective files from the source files
@@ -19,3 +24,4 @@ studentInfo.o:studentInfo.c
 .PHONY:clean
 clean:
 	rm studentInfo.o studentInfo
+	$(MAKE) -C $(SRC) $@

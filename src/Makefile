@@ -4,7 +4,7 @@ SONAME = libprintStudentInfo.so
 VERSION = 1
 LIBSONAME = $(SONAME).$(VERSION)
 
-all:$(SONAME)
+all:$(SONAME) install
 $(SONAME):$(LIBSONAME)
 	ln -sf $^ $@
 
@@ -26,4 +26,4 @@ install:
 # delete the generate files
 .PHONY:clean
 clean:
-	rm  $(LIBSONAME) $(SONAME) printStudentInfo.o
+	rm  -rf $(LIBSONAME) $(SONAME) printStudentInfo.o $(DESTDIR)
