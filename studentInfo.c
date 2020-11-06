@@ -1,10 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "studentInfo.h"
 
-typedef struct tagStudentInfo {
-	int id;
-	char name[20];
-} StudentInfo;
 
 void print(StudentInfo stuArray[], int len)
 {
