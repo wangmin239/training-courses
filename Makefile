@@ -1,4 +1,7 @@
 #link the objective files to a target
+CFLAGS = -I./include -fPIC
+
+
 studentInfo:studentInfo.o
 	$(CC) $(LDFLAGS) $< -o $@
 
