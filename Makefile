@@ -4,17 +4,17 @@ LIBS = ./lib
 LDFLAGS = -L$(LIBS)
 LDLIBS = -lprintStudentInfo
 SRC = ./src
-TARGET = studentInfo
+TARGET = $(basename $(wildcard *.c))
 .PHONY: subdirs $(SRC) $(TARGET)
 subdirs :$(SRC) $(TARGET)
 $(SRC):
 	$(MAKE) -C $@
 
-$(TARGET):studentInfo.o 
+$(TARGET):%$(SUFFIX):%.o 
 	$(CC)  $(CFLAGS) $(LDFLAGS) $< -o $@ $(LDLIBS) -Wl,-rpath,./$(LIBS)
 
 #compile the objective files from the source files
-studentInfo.o:studentInfo.c 
+%.o:%.c 
 	$(CC) -c $(CFLAGS) $< -o $@
 
 
@@ -23,5 +23,5 @@ studentInfo.o:studentInfo.c
 # delete the generate files
 .PHONY:clean
 clean:
-	rm studentInfo.o studentInfo
+	rm $(TARGET).o $(TARGET)
 	$(MAKE) -C $(SRC) $@

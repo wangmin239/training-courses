@@ -10,10 +10,10 @@ $(SONAME):$(LIBSONAME)
 
 
 #compile a shared library
-printStudentInfo.o:printStudentInfo.c
+%.o:%.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
-$(LIBSONAME):lib%.so.$(VERSION):printStudentInfo.o
+$(LIBSONAME):lib%.so.$(VERSION):%.o
 	$(CC) -shared $(CFLAGS) $(LDFLAGS) -Wl,-soname,$(SONAME) -o $@ $^
 
 #install the lib
