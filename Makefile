@@ -5,6 +5,12 @@ LDFLAGS = -L$(LIBS)
 LDLIBS = -lprintStudentInfo
 SRC = ./src
 TARGET = $(basename $(wildcard *.c))
+DEBUG :=
+ifneq ($(DEBUG),)
+	CFLAGS += -g
+endif
+
+
 .PHONY: subdirs $(SRC) $(TARGET)
 subdirs :$(SRC) $(TARGET)
 $(SRC):
