@@ -28,7 +28,9 @@ int main(int argc, char* argv[])
 		fscanf(stdin, "%s", studentArray[i].name);
 	}
 	fprintf(stdout, "\n\n^_^ print the inforamtion of the registerd student. ^_^\n\n");
+#if DEBUG
 	printStudentInfo(studentArray, num);
+#endif
 	free(studentArray);
 	return 0;
 }

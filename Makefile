@@ -8,6 +8,7 @@ TARGET = $(basename $(wildcard *.c))
 DEBUG :=
 ifneq ($(DEBUG),)
 	CFLAGS += -g
+	CFLAGS += -DDEBUG
 endif
 
 
