@@ -20,14 +20,18 @@ int main(int argc, char* argv[])
 	int i;
 	StudentInfo *studentArray;
 	if (argc != 2) {
-		fprintf(stdout, "input error, the program requires two arguments.\n");
+		fprintf(stderr, "Error, the program requires two arguments.\n");
 		return -1;
 	}
 	
 	num = atoi(argv[1]);
+	if (num < 0) {
+		fprintf(stderr, "Error:input a negative value.\n");
+		return -1;
+	}
 	studentArray = calloc(num, sizeof(StudentInfo));
 	if (studentArray == NULL) {
-		fprintf(stdout, "error: memory isn't able to be alloced.\n");
+		fprintf(stderr, "error: memory isn't able to be alloced.\n");
 		return -1;
 	}
 
@@ -39,6 +43,7 @@ int main(int argc, char* argv[])
 	}
 	fprintf(stdout, "\n\n^_^ print the inforamtion of the registerd student. ^_^\n\n");
 	print(studentArray, num);
+	free(studentArray);
 	return 0;
 }
 	
