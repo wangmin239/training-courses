@@ -1,12 +1,15 @@
 #link the objective files to a target
 CFLAGS = -I./include -fPIC
+LIBS = ./lib
+LDFLAGS = -L$(LIBS)
+LDLIBS = -lprintStudentInfo
 
 
 studentInfo:studentInfo.o
-	$(CC) $(LDFLAGS) $< -o $@
+	$(CC)  $(CFLAGS) $(LDFLAGS) $< -o $@ $(LDLIBS) -Wl,-rpath,./$(LIBS)
 
 #compile the objective files from the source files
-studentInfo.o:studentInfo.c
+studentInfo.o:studentInfo.c 
 	$(CC) -c $(CFLAGS) $< -o $@
 
 

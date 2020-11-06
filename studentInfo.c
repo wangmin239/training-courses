@@ -1,14 +1,5 @@
 #include "studentInfo.h"
 
-
-void print(StudentInfo stuArray[], int len)
-{
-	while (--len >= 0) {
-		fprintf(stdout, "Id: %d, Name :%s\n", stuArray[len].id, stuArray[len].name);
-	}
-	return;
-}
-
 int main(int argc, char* argv[])
 {
 	int num;
@@ -37,7 +28,7 @@ int main(int argc, char* argv[])
 		fscanf(stdin, "%s", studentArray[i].name);
 	}
 	fprintf(stdout, "\n\n^_^ print the inforamtion of the registerd student. ^_^\n\n");
-	print(studentArray, num);
+	printStudentInfo(studentArray, num);
 	free(studentArray);
 	return 0;
 }

@@ -6,4 +6,4 @@ typedef struct tagStudentInfo {
 	char name[20];
 } StudentInfo;
 
-void print(StudentInfo stuArray[], int len);
+void printStudentInfo(StudentInfo stuArray[], int len);
